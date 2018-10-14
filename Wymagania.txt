@@ -1,0 +1,16 @@
+Wymagania funkcjonalne:
+	*Baza danych powinna przechowywać informacje o hotelach i klientach sieci.
+	*W przypadku danych klienckich, głównymi funkcjonalnościami będzie możliwość dodania, usunięcia i podstawowej edycji danych osobistych.
+	*System powinien rozpoznawać indywidualnych klientów wg. wewnętrznego ID.
+	*W przypadku konkretnych hoteli, system powinien dopuszczać możliwość usunięcia i dodania placówek, jednak z oczywistych względów nie jest to funkcjonalność często wywoływana - podstawową funkcją jest możliwość edycji danych.
+	*System powinien poprawnie przypisywać pokoje tylko do pojedynczego hotelu.
+	*Dla pokoi, możliwość dodania i usunięcia pozycji nie jest potrzebna więcej niż raz, przy otwarciu hotelu. Podstawowymi funkcjonalnościami powinno tu być przypisanie pokoju do klienta, oraz zmiana statusu na wolny/zajęty.
+	*System powinien pozwalać klientom przeglądać pokoje i dokonywac wstępnej ich rezerwacji.
+Wymagania niefunkcjonalne:
+	*System powinien być wykonany w technologii Oracle DB w celu łatwiejszej integracji z istniejącą bazą danych klienta.
+	*Warstwa dostępowa powinna być wykonana w technologii Java ze względu na doświadczenie zespołu projektowego.
+	*System powinien przechowiwać kilka do klikunastu hoteli, w których będzie znajdować się po klikadziesiąt do ~300 pokoi.
+	*System powinien przewidywać do klikunastu tysięcy klientów.
+	*Wszelka możliwość edycji jest zarezerwowana dla administratora systemu.
+	*Klienci powinni mieć wgląd do swoich danych, oraz możliwość zażądania ich edycji lub usunięcia.
+	*System powinien dopuszczać tylko zarejestrowanych klientów.
