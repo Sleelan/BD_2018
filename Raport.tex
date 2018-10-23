@@ -1,0 +1,86 @@
+\documentclass[]{article}
+\usepackage[T1]{fontenc}
+\frenchspacing
+
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+
+\setcounter{section}{0}
+\title{ \textbf{\huge{Bazy Danych 2} \\ \bigskip Projekt:\\ System rezerwacji miejsc w sieci hotelowej} }
+
+\author{Szwajka Marek 235077 \\  Adam Skowroński 236036 \\  Witold Latos 218420 \\ \bigskip \\ \textbf{\LARGE{Prowadzący:}} \\ Dr inż. Roman Ptak }
+\date{\textbf{\LARGE{Środa 11:15}} \\ \bigskip  Wrocław, 2018}
+\begin{document}
+		\maketitle
+	\newpage 
+	\section{Wstęp}
+	\subsection{Cel projektu}
+	\subsubsection{Cel}
+	Celem projektu jest stworzenie systemu obsługującego rezerwację pomieszczeń w danej sieci hotelowej, zarówno po stronie administracyjnej (pracowników) oraz nabywczej (klientów). 
+	\subsection{Zakres projektu}
+	\subsubsection{System}
+	System będzie składał się z bazy danych umożliwiającej przechowywanie wpisów dot. rezerwacji danych pokoi, miejsc parkingowych, wypożyczalni sprzętu oraz innych atrakcji danego hotelu w sieci. \\ \\
+	System w swojej bazie danych ma zawierać sieć hoteli obejmującą 10 budynków rozproszonych na obszarze większych miast Polski.
+	\subsubsection{Dostęp}
+	Dostęp do bazy danych będzie umożliwiony poprzez aplikację, dzięki której możliwe będzie przeglądanie pokoi i ich rezerwacja (w przypadku klientów) oraz monitorowanie wpisów z rezerwacjami bądz ich zmiana (administracja).
+	\newpage
+	\section{Analiza wymagań}
+	W naszym projekcie będą potrzebne takie elementy jak:
+	\begin{description} 
+		\item[Baza Danych] - baza danych będzie naszym podstawowym zbiorem rekordów opisujących każdą podjętą akcje w hotelu (rezerwacja pokoju, sprzętu, miejsca parkingowego w danym hotelu). Usprawni to organizacje danych w celu uzyskania szybkiej realizacji danych zamówień bądz rezerwacji. 
+		
+		\item[Aplikacja] - aby wzmocnić praktyczny aspekt bazy danych, będzie potrzebna zewnętrzna aplikacja pozwalająca na łatwy dostęp do wymienionej wyżej bazy danych. Ułatwi ona procesy typowo wykonywanych na codzień operacji takich jak monitorowanie pokoi, wypożyczanego sprzętu, itd.
+	\end{description}
+	\subsection{Opis działania i schemat logiczny systemu}
+	System umożliwia nadzór zasobów hotelu poprzez jego integracje z bazą danych.
+	\subsubsection{Klient}
+	\begin{itemize}
+	\item Klient za pomocą dedykowanej aplikacji przegląda (poprzez algorytmy filtracji) dane oferty pokoi, które w bazie danych są wylistowane jako dostępne.
+	\item Klient dokonuje rezerwacji poprzez podanie swoich danych osobowych dzięki formularzowi (jednocześnie tworząc konto).
+	\item W bazie danych zostaje odnotowany nowy wpis dot. klienta o statusie świadczącym o nowo nabytej rezerwacji. Od tego momentu za nadzór odpowiada administrator hotelu.
+	\end{itemize}  
+	\subsubsection{Administracja}	
+	\begin{itemize}
+		\item Każdy członek personelu ma swój login/hasło, dzięki temu loguje się do odpowiedniej jednostki hotelu.
+		\item Dana już przydzielona jednostka (przez klienta) hotelu odnotowuje nowy wpis o kliencie.
+		\item Wysyła potwierdzenie klientowi rezerwacji (telefonicznie lub mailowo).
+		\item Nadzoruje pobyt klienta z poziomu bazy danych (wszelkie wnioski bądz wpisy o wypożyczenie sprzętu bądz pokoju itd. odbywają się wew. bazy danych).
+	\end{itemize}
+\newpage
+	\subsection{Wymagania funckjonalne}
+	\begin{itemize}
+		\item W przypadku danych klienckich przechowywanych w bazie, głównymi funkcjonalnościami będzie możliwość dodania, usunięcia i podstawowej edycji danych osobistych.
+		\item System powinien zapamiętywać indywidualnych klientów wg. wewnętrznego ID.
+		\item W przypadku konkretnych hoteli, system powinien dopuszczać możliwość usunięcia i dodania placówek, jednak z oczywistych względów nie jest to funkcjonalność często wywoływana - podstawową funkcją jest możliwość edycji danych.
+		\item Dla pokoi, możliwość dodania i usunięcia pozycji nie jest potrzebna więcej niż raz, przy otwarciu hotelu. Podstawowymi funkcjonalnościami powinno tu być przypisanie pokoju do klienta, oraz zmiana statusu na wolny/zajęty/w remoncie, oraz ewentualna modyfikacja oceny komfortu.
+		\item System powinien pozwalać klientom przeglądać pokoje i dokonywac wstępnej ich rezerwacji.
+		\item System powinien pozwalać pracownikom na wymeldowywanie i zameldowywanie klientów w pokoju.
+		\item System powinien przechowywać dane o sprzęcie dostępnym do wypożyczenia (takim jak rowery, narty czy okulary do nurkowania) oraz pozwalać klientom na ich wypożyczenie.
+		\item System powinien zawierać funkcje rejstracji i logowania oraz zabezpieczenie przed SQL inject.
+	\end{itemize}
+	\newpage
+	\subsection{Wymagania niefunkcjonalne}
+	\subsubsection{Wykorzystywane technologie i narzędzia}
+	\begin{itemize} 
+	\item System powinien być wykonany w technologii Oracle DB w celu łatwiejszej
+	integracji z istniejącą bazą danych klienta.
+	\item Warstwa dostępowa powinna być wykonana w technologii Java ze względu na
+	doświadczenie zespołu projektowego.
+	\end{itemize}
+	\subsubsection{Wymagania dotyczące rozmiaru bazy danych}
+	\begin{itemize} 
+	\item System powinien przechowywać kilka do klikunastu hoteli, w których będzie
+	znajdować się po klikadziesiąt do 300 pokoi.
+ 	\item System powinien przewidywać do klikunastu tysięcy klientów.
+	\item System powinien przechowywać dane o rezerwacjach przez okres minimum 10 lat. Przy założeniu że jeden pokój jest wynajmowany raz na tydzień, wygeneruje to około miliona rekordów. Ze względu jednak na ich niewielki charakter (agregacja rekordu klienta i pokoju wraz z danymi o terminie) baza danych nie powinna być większa niż średnia.
+	\end{itemize}
+	\subsubsection{Wymagania dotyczące bezpieczeństwa systemu}
+	\begin{itemize} 
+	\item Wszelka możliwość edycji jest zarezerwowana dla administratora systemu.
+	\item System powinien zawierać funkcje rejestracji i logowania oraz zabezpieczenie
+	przed SQL inject.
+	\item Klienci powinni mieć wgląd do swoich danych, oraz możliwość zażądania ich
+	edycji lub usunięcia.
+	\item System powinien dopuszczać tylko zarejestrowanych klientów.
+  	\end{itemize}
+\end{document}
